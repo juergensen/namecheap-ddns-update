@@ -1,9 +1,9 @@
 # Start from apline, a minimal docker image
-FROM alpine:latest
+FROM alpine:3.11.12
 
 # Add in SSL certificates for use with https, curl to call the update endpoint,
 # bash used by the namecheap-ddns-update script, and gawk to parse the response
-RUN apk add --update ca-certificates curl bash gawk
+RUN apk update && apk add --update ca-certificates curl bash gawk
 
 # Copy the pre-built go executable and the static files
 ADD namecheap-ddns-update /
